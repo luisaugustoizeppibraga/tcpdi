@@ -705,6 +705,10 @@ class tcpdi_parser {
         if ($data == null) {
             $data =& $this->pdfdata;
         }
+        if (!isset($data{$offset})){
+            $lastError = error_get_last();
+            throw new Exception('O PDF foi exportado de uma forma que não permite conversão! <br>'. $lastError['message']);
+        }
         $objtype = ''; // object type to be returned
         $objval = ''; // object value to be returned
         // skip initial white space chars: \x00 null (NUL), \x09 horizontal tab (HT), \x0A line feed (LF), \x0C form feed (FF), \x0D carriage return (CR), \x20 space (SP)
@@ -813,7 +817,7 @@ class tcpdi_parser {
                 }
                 break;
             }
-            default: {
+            default: {               
                 $frag = $data{$offset} . @$data{$offset+1} . @$data{$offset+2} . @$data{$offset+3};
                 switch ($frag) {
                     case 'endo':
