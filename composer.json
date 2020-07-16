@@ -1,5 +1,5 @@
 {
-	"name": "luisaugustobraga/tcpdi",
+	"name": "luisaugustoizeppibraga/tcpdi",
 	"version": "1.0.3",
 	"type": "library",
 	"description": "TCPDI is a PHP class for importing PDF to use with TCPDF",
