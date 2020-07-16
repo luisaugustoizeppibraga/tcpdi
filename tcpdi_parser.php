@@ -707,7 +707,7 @@ class tcpdi_parser {
         }
         if (!isset($data{$offset})){
             $lastError = error_get_last();
-            throw new Exception('O PDF foi exportado de uma forma que não permite conversão! <br>'. (isset($lastError['message']) ? $lastError['message'] : ''));
+            throw new Exception('O PDF foi exportado de uma forma que não permite ser convertido! <br>'. (isset($lastError['message']) ? $lastError['message'] : ''));
         }
         $objtype = ''; // object type to be returned
         $objval = ''; // object value to be returned
