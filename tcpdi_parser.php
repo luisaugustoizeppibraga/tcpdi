@@ -818,6 +818,12 @@ class tcpdi_parser {
                 break;
             }
             default: {               
+                //This will return true if $someVarName exists and it's not null
+                if (!@$data{$offset} || !@$data{@$offset+1} || !@$data{@$offset+2} || !@$data{@$offset+3}){
+                    $lastError = error_get_last();
+                    throw new Exception('O PDF foi exportado de uma forma que não permite ser convertido! <br>'. (isset($lastError['message']) ? $lastError['message'] : ''));
+                    break;
+                }
                 $frag = $data{$offset} . @$data{$offset+1} . @$data{$offset+2} . @$data{$offset+3};
                 switch ($frag) {
                     case 'endo':
